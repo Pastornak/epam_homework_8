@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="TouristVoucherTable.xsl"?>
+<touristvoucher>
+	<trippass>
+		<type>weekend</type>
+		<country>Poland</country>
+		<staying>
+			<days>3</days>
+			<nights>2</nights>
+		</staying>
+		<transport>rail</transport>
+		<hotel>
+			<name>Het`man</name>
+			<stars>3</stars>
+			<meal>HB</meal>
+			<room>2</room>
+			<tv>true</tv>
+			<conditioner>true</conditioner>
+		</hotel>
+		<cost>150</cost>
+	</trippass>
+</touristvoucher>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- definition of simple elements -->
+	<xs:element name="country" type="xs:string" />
+	<xs:element name="name" type="xs:string" />
+	<xs:element name="tv" type="xs:boolean" />
+	<xs:element name="conditioner" type="xs:boolean" />
+
+	<!-- definition of complex elements -->
+	<xs:element name="type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="weekend" />
+				<xs:enumeration value="holiday" />
+				<xs:enumeration value="excursion" />
+				<xs:enumeration value="pilgrimage" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="staying">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="days" type="xs:int" />
+				<xs:element name="nights" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="transport">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="air" />
+				<xs:enumeration value="rail" />
+				<xs:enumeration value="auto" />
+				<xs:enumeration value="liner" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="stars">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="1" />
+				<xs:maxInclusive value="5" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="meal">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="HB" />
+				<xs:enumeration value="BB" />
+				<xs:enumeration value="AI" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="room">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="1" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="cost">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="0" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="hotel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name" />
+				<xs:element ref="stars" />
+				<xs:element ref="meal" />
+				<xs:element ref="room" />
+				<xs:element ref="tv" />
+				<xs:element ref="conditioner" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="trippass">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="type" />
+				<xs:element ref="country" />
+				<xs:element ref="staying" />
+				<xs:element ref="transport" />
+				<xs:element ref="hotel" />
+				<xs:element ref="cost" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<!-- xsd itself -->
+	<xs:element name="touristvoucher">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="trippass" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+</xs:schema>
